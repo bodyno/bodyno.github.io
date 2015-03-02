@@ -1,0 +1,350 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>利用browserify or requirejs 来构建angularjs | Nobody&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Nobody Xu">
+    
+    <meta name="description" content="利用browserify or requirejs 来构建angularjs
+                随着业务的增长,利用ng来构建项目时候,文件数量就会显著的上升,从而上线部署的时候就要考虑压缩合并问题,随着前端工程化的发展,现在已经有很多种第三方工具来实现开发与部署的便捷性,browse">
+    
+    
+    
+    
+    <link rel="alternative" href="/atom.xml" title="Nobody&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Nobody&#39;s blog" title="Nobody&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Nobody&#39;s blog">Nobody&#39;s blog</a></h1>
+				<h2 class="blog-motto">Better Man , Better Life</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/03/02/browserify/" title="利用browserify or requirejs 来构建angularjs" itemprop="url">利用browserify or requirejs 来构建angularjs</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="http://yoursite.com/about" title="Nobody Xu" target="_blank" itemprop="author">Nobody Xu</a>
+		
+  <p class="article-time">
+    <time datetime="2015-03-02T08:18:46.000Z" itemprop="datePublished"> 发表于 3月 2 2015</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#利用browserify_or_requirejs_来构建angularjs"><span class="toc-number">1.</span> <span class="toc-text">利用browserify or requirejs 来构建angularjs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#-ng-"><span class="toc-number">1.0.1.</span> <span class="toc-text">一个普通的ng例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#browserify-ng"><span class="toc-number">1.0.2.</span> <span class="toc-text">browserify 构建ng</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#requirejs-ng"><span class="toc-number">1.0.3.</span> <span class="toc-text">requirejs 构建ng</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#-"><span class="toc-number">1.0.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="利用browserify_or_requirejs_来构建angularjs">利用browserify or requirejs 来构建angularjs</h1>
+<div class="markdown detail-content" ng-non-bindable=""><br>                <p>随着业务的增长,利用<code>ng</code>来构建项目时候,文件数量就会显著的上升,从而上线部署的时候就要考虑压缩合并问题,随着前端工程化的发展,现在已经有很多种第三方工具来实现开发与部署的便捷性,<code>browserify</code>与<code>requirejs</code>就是其中的两个比较好多的工具.</p><br><ul><br><li>browserify以<code>commonjs</code>模块开发规范来约束前端模块开发,最后上线时提供命令行生成合并文件,详情请 <a href="https://www.npmjs.org/package/browserify" target="_blank" rel="external">点击这里</a></li><br><li>requirejs以<code>amd</code>模块开发规范来约束前端模块开发,最后上线的时候提供<code>r.js</code>命令行工具来生成合并压缩文件,详情请 <a href="http://requirejs.org/" target="_blank" rel="external">点击这里</a></li><br></ul><br><h3 id="-ng-">一个普通的ng例子</h3><br><p>下面先提供一个原生的ng例子,只显示核心的代码</p><br><pre><code class="lang-js hljs php"><br><span class="hljs-comment">// 核心文件 app.js</span><br><br>(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span><br><br>      <span class="hljs-keyword">var</span> app = angular.module(<span class="hljs-string">‘myApp’</span>, [<span class="hljs-string">‘ngRoute’</span>]);<br><br>      <span class="hljs-comment">// 下面这个需要依赖angular-route模块</span><br>      app.config([<span class="hljs-string">‘$routeProvider’</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(<span class="hljs-variable">$routeProvider</span>)</span> {</span><br>            <span class="hljs-variable">$routeProvider</span>.when(<span class="hljs-string">‘/home’</span>,<br>            {<br>              templateUrl: <span class="hljs-string">‘partials/home.html’</span>,<br>              controller: <span class="hljs-string">‘HomeController’</span><br>            })<br>            .otherwise(<br>            {<br>              redirectTo: <span class="hljs-string">‘/home’</span><br>            })<br>      }]);<br><br>      app.controller(<span class="hljs-string">‘HomeController’</span>, [<span class="hljs-string">‘$scope’</span>, <span class="hljs-string">‘usersService’</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$scope</span>, usersService)</span>{</span><br>            <span class="hljs-variable">$scope</span>.title = <span class="hljs-string">‘Home’</span>;<br>            <span class="hljs-variable">$scope</span>.users = usersService.getData();<br>      }]);<br><br>      app.factory(<span class="hljs-string">‘usersService’</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span><br>            <span class="hljs-keyword">var</span> service = {<br>              getData: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span><br>                <span class="hljs-keyword">return</span> [{name: <span class="hljs-string">‘feenan’</span>, info: <span class="hljs-string">‘fe’</span>}, {name: <span class="hljs-string">‘tina’</span>, info: <span class="hljs-string">‘financy’</span>}];<br>              }<br>            }<br>            <span class="hljs-keyword">return</span> service;<br>      });<br><br>}());<br></code></pre><br><h3 id="browserify-ng">browserify 构建ng</h3><br><p>下面以<code>browserify</code>的模块开发规范来重构上面的例子,项目结构大概这样:</p><br><ul><li>app<ul><li>lib  这个下面存放第三方js库,例如jquery,angularjs</li><li>partials<ul><li>home.html</li></ul></li><li>controllers<ul><li>homeController.js</li></ul></li><li>services<ul><li>usersService.js</li></ul></li><li>app.js</li></ul></li><li>index.html</li></ul><br><blockquote><p>homeController.js </p></blockquote><br><pre><code class="lang-js hljs php"><br>module.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(<span class="hljs-variable">$scope</span>, usersService)</span> {</span><br><br>    <span class="hljs-variable">$scope</span>.title = <span class="hljs-string">‘Home’</span>;<br>    <span class="hljs-variable">$scope</span>.users = usersService.getData();<br><br>};<br></code></pre><br><blockquote><br><p>usersService.js</p><br></blockquote><br><pre><code class="lang-js hljs javascript">module.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span><br>    <span class="hljs-keyword">var</span> service = {<br>      getData: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span><br>        <span class="hljs-keyword">return</span> [{name: <span class="hljs-string">‘feenan’</span>, info: <span class="hljs-string">‘fe’</span>}, {name: <span class="hljs-string">‘tina’</span>, info: <span class="hljs-string">‘financy’</span>}];<br>      }<br>    }<br>    <span class="hljs-keyword">return</span> service;<br>}<br></code></pre><br><blockquote><br><p>app.js</p><br></blockquote><br><pre><code class="lang-js hljs php"><span class="hljs-comment">// 加载所有的依赖</span><br>window.jQuery = <span class="hljs-keyword">require</span>(<span class="hljs-string">‘./lib/jquery/jquery.min’</span>);<br><span class="hljs-keyword">require</span>(<span class="hljs-string">‘./lib/angular/angular.min’</span>);<br><span class="hljs-keyword">require</span>(<span class="hljs-string">‘./lib/angular-route/angular-route.min’</span>);<br><br><span class="hljs-comment">// 获取控制器与服务的依赖</span><br><span class="hljs-keyword">var</span> homeController = <span class="hljs-keyword">require</span>(<span class="hljs-string">‘./controllers/homeController’</span>);<br><span class="hljs-keyword">var</span> usersService = <span class="hljs-keyword">require</span>(<span class="hljs-string">‘./services/usersService’</span>);<br><br><span class="hljs-comment">// module up</span><br><span class="hljs-keyword">var</span> app = angular.module(<span class="hljs-string">‘app’</span>, [ <span class="hljs-string">‘ngRoute’</span>]);<br><br><span class="hljs-comment">// routes and such</span><br>app.config([<span class="hljs-string">‘$routeProvider’</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$routeProvider</span>)</span> {</span><br>  <span class="hljs-variable">$routeProvider</span><br>    .when(<span class="hljs-string">‘/home’</span>,<br>    {<br>      templateUrl: <span class="hljs-string">‘partials/home.html’</span>,<br>      controller: <span class="hljs-string">‘HomeController’</span><br>    })<br>    .otherwise(<br>    {<br>      redirectTo: <span class="hljs-string">‘/home’</span><br>    });<br>}]);<br><br><span class="hljs-comment">// create factories</span><br>app.factory(<span class="hljs-string">‘usersService’</span>, usersService);<br><br><span class="hljs-comment">// create controllers</span><br>app.controller(<span class="hljs-string">‘HomeController’</span>, [<span class="hljs-string">‘$scope’</span>, <span class="hljs-string">‘usersService’</span>, homeController]);<br></code></pre><br><p>然后我们用<code>browserify</code>来生成最终<code>index.html</code>引用的文件名,先<code>cd</code>到<code>app</code>目录</p><br><blockquote><br><p>browserify app.js -o main.js</p><br></blockquote><br><p>最后我们来看看<code>index.html</code>代码</p><br><pre><code class="lang-html hljs xml"><br><span class="hljs-doctype">&lt;!doctype html&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-title">html</span> <span class="hljs-attribute">lang</span>=<span class="hljs-value">“en”</span> <span class="hljs-attribute">ng-app</span>=<span class="hljs-value">“myApp”</span> &gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">charset</span>=<span class="hljs-value">“utf-8”</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">ng-view</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">“app/main.js”</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span><br></code></pre><br><p>可以看到最终的页面里只需要引用一个js文件就可以了,这就是神奇的地方,因为<code>browserify</code>编译文件时候已经加载了一套自己的模块处理方案,有兴趣的话可以自己写个简单的项目分析下编译后的js文件</p><br><h3 id="requirejs-ng">requirejs 构建ng</h3><br><p>下面我们来用<code>requirejs</code>来重构上面的例子,大概的目录结构如下:</p><br><ul><br><li>app<ul><br><li>partials<ul><br><li>home.html</li><br></ul><br></li><br><li>controllers<ul><br><li>index.js  // 包括所有的 控制器的入口</li><br><li>module.js // 创建控制器模块</li><br><li>homeController.js<br>services</li><br><li>index.js  // 同控制器</li><br><li>modules.js </li><br><li>userService.js</li><br></ul><br></li><br><li>app.js  // 创建ng主模块的地方</li><br><li>main.js // requirejs配置文件地方</li><br><li>routes.js // 配置路由的地方</li><br></ul><br></li><br></ul><br><p>下面我们一一来创建这些文件,静态页文件除外</p><br><p>先说说<code>requirejs</code>配置文件</p><br><blockquote><br><p>main.js </p><br></blockquote><br><pre><code class="lang-js hljs javascript"><br><span class="hljs-built_in">require</span>.config({<br>  paths: {<br>    <span class="hljs-string">‘jquery’</span>: <span class="hljs-string">‘./lib/jquery/jquery.min’</span>,<br>    <span class="hljs-string">‘angular’</span>: <span class="hljs-string">‘./lib/angular/angular.min’</span>,<br>    <span class="hljs-string">‘angular-route’</span>: <span class="hljs-string">‘./lib/angular/angular-route.min’</span>,<br>    <span class="hljs-string">‘app’</span>: <span class="hljs-string">‘app’</span><br>  },<br>  shim: {<br>      <span class="hljs-string">‘angular-route’</span>: {<br>        deps: [<span class="hljs-string">‘angular’</span>]<br>    },<br>    <span class="hljs-string">‘app’</span>: {<br>        deps: [<span class="hljs-string">‘jquery’</span>, <span class="hljs-string">‘angular’</span>, <span class="hljs-string">‘angular-route’</span>]<br>    }<br>  }<br>});<br><br>define([<span class="hljs-string">‘./routes’</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span><br><br>  <span class="hljs-comment">// 启动ng</span><br>  angular.bootstrap(document, [<span class="hljs-string">‘app’</span>]);<br><br>});<br></code></pre><br><p>上面的<code>define</code>的时候依赖了<code>routes</code>文件</p><br><blockquote><br><p>routes.js</p><br></blockquote><br><pre><code class="lang-js hljs php">define([<br>  <span class="hljs-string">‘./app’</span><br>], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(app)</span> {</span><br>  <span class="hljs-comment">// 通过返回app主模块来定义配置</span><br>  <span class="hljs-keyword">return</span> app.config([<span class="hljs-string">‘$routeProvider’</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(<span class="hljs-variable">$routeProvider</span>)</span> {</span><br>    <span class="hljs-variable">$routeProvider</span><br>      .when(<span class="hljs-string">‘/home’</span>,<br>        {<br>          templateUrl: <span class="hljs-string">‘/app/partials/home.html’</span>,<br>          controller: <span class="hljs-string">‘homeController’</span><br>        })<br>      .otherwise(<br>        {<br>          redirectTo: <span class="hljs-string">‘/home’</span><br>        });<br><br>  }]);<br>});<br></code></pre><br><p>上面的路由文件依赖<code>app.js</code></p><br><blockquote><br><p>app.js</p><br></blockquote><br><pre><code class="lang-js hljs javascript"><br>define([<br>  <span class="hljs-string">‘./controllers/index’</span>,<br>  <span class="hljs-string">‘./services/index’</span><br>], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(controllers, index)</span> {</span><br><br>  <span class="hljs-comment">// 因为主模块依赖控制器与服务模块</span><br>  <span class="hljs-comment">// 上面的两个index 依赖分别为控制器与服务模块的两个入口</span><br>  <span class="hljs-keyword">return</span> angular.module(<span class="hljs-string">‘app’</span>, [<br>    <span class="hljs-string">‘ngRoute’</span>,<br>    <span class="hljs-string">‘app.controllers’</span>,<br>    <span class="hljs-string">‘app.services’</span><br>  ]);<br>});<br></code></pre><br><p>下面先看看控制器的入口文件</p><br><blockquote><br><p>controllers/index.js</p><br></blockquote><br><pre><code class="lang-js hljs javascript"><br>define([<br>  <span class="hljs-string">‘./homeController’</span><br>], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span><br>    <span class="hljs-comment">// 此处为空,这个文件主要是控制当控制器比较多时可以多加载完毕</span><br>});<br></code></pre><br><p>再来看看控制器代码</p><br><blockquote><br><p>controllers/homeController.js</p><br></blockquote><br><pre><code class="lang-js hljs php"><br>define([<br>  <span class="hljs-string">‘./module’</span><br>], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(module)</span> {</span><br><br>  module.controller(<span class="hljs-string">‘homeController’</span>, [<span class="hljs-string">‘$scope’</span>, <span class="hljs-string">‘userService’</span>,<br>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(<span class="hljs-variable">$scope</span>, userService)</span> {</span><br>      <span class="hljs-variable">$scope</span>.title = <span class="hljs-string">‘Home’</span>;<br>      <span class="hljs-variable">$scope</span>.users = userService.getData();<br>    };<br>  );<br><br>});<br></code></pre><br><p>下面来看看控制器主模块</p><br><blockquote><br><p>controllers/module.js</p><br></blockquote><br><pre><code class="lang-js hljs javascript"><br>define(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span><br><br>  <span class="hljs-keyword">return</span> angular.module(<span class="hljs-string">‘app.controllers’</span>, []);<br><br>});<br></code></pre><br><p>上面定义了控制器模块,以后新增的控制器都由它来定义</p><br><p>然后<code>service</code>的代码跟控制器思路差不多,这里就不一一定义了.</p><br><p>最后总结下这些依赖关系</p><br><ul><br><li>“main.js” requires “routes.js”<ul><br><li>“routes.js” requires “app.js”<ul><br><li>“app.js” requires “controllers/index.js”<ul><br><li>“controllers/index.js” requires all controllers<ul><br><li>all controllers require “module.js”<ul><br><li>“module.js” creates the “app.controllers” module</li><br></ul><br></li><br></ul><br></li><br></ul><br></li><br></ul><br></li><br></ul><br></li><br></ul><br><p>从上面的依赖关系可以看到,当所有的控制器与服务都加载完毕,然后创建ng主模块,加载路由配置信息,最后调用启动方法.</p><br><p>关于<code>requirejs</code>的代码优化可以用它提供的<code>r.js</code>来合并压缩上面定义的文件最后合成一个文件来运行.</p><br><h3 id="-">总结</h3><br><p>通过上面的比较可以看出,<code>requirejs</code>比较适合大型ng项目开发,<code>browserify</code>在小型项目上要更适合,因为它比较轻量,而且<code>commonjs</code>规范可以保证相同的功能在前后端通用.</p><br><p>本文参考了此篇文章: <a href="http://developer.telerik.com/featured/requiring-vs-browerifying-angular/" target="_blank" rel="external">Requiring vs Browserifying Angular</a></p><br><p>原文地址：<a href="http://ngnice.com/posts/34d25c5f97f2c4" target="_blank" rel="external">http://ngnice.com/posts/34d25c5f97f2c4</a></p><br></div>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2015/03/02/browserify/" data-title="利用browserify or requirejs 来构建angularjs | Nobody&#39;s blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/02/28/angularjs/"  title="angularjs">
+ <strong>下一篇：</strong><br/> 
+ <span>angularjs
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#利用browserify_or_requirejs_来构建angularjs"><span class="toc-number">1.</span> <span class="toc-text">利用browserify or requirejs 来构建angularjs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#-ng-"><span class="toc-number">1.0.1.</span> <span class="toc-text">一个普通的ng例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#browserify-ng"><span class="toc-number">1.0.2.</span> <span class="toc-text">browserify 构建ng</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#requirejs-ng"><span class="toc-number">1.0.3.</span> <span class="toc-text">requirejs 构建ng</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#-"><span class="toc-number">1.0.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li>
+        <a href="http://www.acfun.tv" target="_blank" title="YangJian">Acfun</a>
+      </li>
+      <li>
+        <a href="http://www.cnblogs.com/cate/108703/" target="_blank" title="zippera">博客园</a>
+      </li>
+      <li>
+        <a href="http://www.weibo.com/nobody005" target="_blank" title="brotherb">我的微博</a>
+      </li>
+      <li>
+        <a href="http://www.ithome.com/" target="_blank" title="JiangTao">IT之家</a>
+      </li>
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Pacman">Jacman</a> © 2015 
+		
+		<a href="http://yoursite.com/about" target="_blank" title="Nobody Xu">Nobody Xu</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+
+
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<script src="/js/totop.js"></script>
+
+
+
+
+  </body>
+</html>
