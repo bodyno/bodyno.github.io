@@ -4,16 +4,14 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>go on don&#39;t think what things you did before | Nobody&#39;s blog</title>
+    <title>CSS3 background-position新值了解 | Nobody&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Nobody Xu">
     
-    <meta name="description" content="做自己想做的事，让别人去说吧
-冲破传统的束缚
-未来由我们自己创造
-我们出生在这个世界上，不是为了改变世界，而是为了享受生命
-Let it go！">
+    <meta name="description" content="值支持1~4个值，可以是具体数值，也可以是百分比，也可以是left, top, right, center, bottom关键字
+如果偏移没有响应的关键字，则会被认为是center.
+3值或4值可以指定偏移的相对位置，这是CSS3新特性，现代浏览器下才支持。包括：Chrome 25+, Firefo">
     
     
     
@@ -74,14 +72,14 @@ Let it go！">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/03/12/goon/" title="go on don&#39;t think what things you did before" itemprop="url">go on don&#39;t think what things you did before</a>
+      <a href="/2015/03/19/backgroundPosition/" title="CSS3 background-position新值了解" itemprop="url">CSS3 background-position新值了解</a>
   </h1>
   <p class="article-author">By
        
 		<a href="http://yoursite.com/about" title="Nobody Xu" target="_blank" itemprop="author">Nobody Xu</a>
 		
   <p class="article-time">
-    <time datetime="2015-03-12T03:10:18.780Z" itemprop="datePublished"> 发表于 3月 12 2015</time>
+    <time datetime="2015-03-19T02:13:56.216Z" itemprop="datePublished"> 发表于 3月 19 2015</time>
     
   </p>
 </header>
@@ -91,15 +89,16 @@ Let it go！">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#做自己想做的事，让别人去说吧"><span class="toc-number">1.</span> <span class="toc-text">做自己想做的事，让别人去说吧</span></a></li></ol>
+			
 		
 		</div>
 		
-		<h1 id="做自己想做的事，让别人去说吧">做自己想做的事，让别人去说吧</h1>
-<p>冲破传统的束缚</p>
-<p>未来由我们自己创造</p>
-<p>我们出生在这个世界上，不是为了改变世界，而是为了享受生命</p>
-<p>Let it go！</p>
+		<p><position>值支持1~4个值，可以是具体数值，也可以是百分比，也可以是left, top, right, center, bottom关键字</position></p>
+<p>如果偏移没有响应的关键字，则会被认为是center.</p>
+<p>3值或4值可以指定偏移的相对位置，这是CSS3新特性，现代浏览器下才支持。包括：Chrome 25+, Firefox 13+, IE 9+, Opera 10.5+, Safari/iOS 7+ .</p>
+<p>哇哦，IE9都支持，应该可以愉快地使用了吧！抱歉，我要泼点冷水。貌似Android的支持有些糟糕，据说：Android 4.4才支持，Android 4.0~4.2都不支持。因此，我们在实现此类效果的时候，可能还需要留一手，如下，使用calc计算：</p>
+<p>background-position: calc(100% - 40px) calc(100% -20px);</p>
+<p>因此，实际使用还需要根据场景分别或hack处理。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -111,7 +110,7 @@ Let it go！">
 
 <div class="article-share" id="share">
 
-  <div data-url="http://yoursite.com/2015/03/12/goon/" data-title="go on don&#39;t think what things you did before | Nobody&#39;s blog" data-tsina="null" class="share clearfix">
+  <div data-url="http://yoursite.com/2015/03/19/backgroundPosition/" data-title="CSS3 background-position新值了解 | Nobody&#39;s blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -120,19 +119,11 @@ Let it go！">
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/03/19/backgroundPosition/" title="CSS3 background-position新值了解">
-  <strong>上一篇：</strong><br/>
-  <span>
-  CSS3 background-position新值了解</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/03/10/node/"  title="Node">
+<a href="/2015/03/12/goon/"  title="go on don&#39;t think what things you did before">
  <strong>下一篇：</strong><br/> 
- <span>Node
+ <span>go on don&#39;t think what things you did before
 </span>
 </a>
 </div>
@@ -147,7 +138,7 @@ Let it go！">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#做自己想做的事，让别人去说吧"><span class="toc-number">1.</span> <span class="toc-text">做自己想做的事，让别人去说吧</span></a></li></ol>
+ 
  
   </div>
 
