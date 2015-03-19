@@ -4,14 +4,16 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>CSS3 background-position新值了解 | Nobody&#39;s blog</title>
+    <title>escape,encodeURI,encodeURIComponent有什么区别 | Nobody&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Nobody Xu">
     
-    <meta name="description" content="值支持1~4个值，可以是具体数值，也可以是百分比，也可以是left, top, right, center, bottom关键字
-如果偏移没有响应的关键字，则会被认为是center.
-3值或4值可以指定偏移的相对位置，这是CSS3新特性，现代浏览器下才支持。包括：Chrome 25+, Firefo">
+    <meta name="description" content="一、escape和它们不是同一类
+简单来说，escape是对字符串(string)进行编码(而另外两种是对URL)，作用是让它们在所有电脑上可读。
+编码之后的效果是%XX或者%uXXXX这种形式。
+其中 ASCII字母 数字 @*/+ 这几个字符不会被编码，其余的都会。
+最关键的是，当你需要对URL">
     
     
     
@@ -72,14 +74,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/03/19/backgroundPosition/" title="CSS3 background-position新值了解" itemprop="url">CSS3 background-position新值了解</a>
+      <a href="/2015/03/19/encodeURI/" title="escape,encodeURI,encodeURIComponent有什么区别" itemprop="url">escape,encodeURI,encodeURIComponent有什么区别</a>
   </h1>
   <p class="article-author">By
        
 		<a href="http://yoursite.com/about" title="Nobody Xu" target="_blank" itemprop="author">Nobody Xu</a>
 		
   <p class="article-time">
-    <time datetime="2015-03-19T02:13:56.216Z" itemprop="datePublished"> 发表于 3月 19 2015</time>
+    <time datetime="2015-03-19T07:22:28.202Z" itemprop="datePublished"> 发表于 3月 19 2015</time>
     
   </p>
 </header>
@@ -89,16 +91,31 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、escape和它们不是同一类"><span class="toc-number">1.</span> <span class="toc-text">一、escape和它们不是同一类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、最常用的encodeURI和encodeURIComponent"><span class="toc-number">2.</span> <span class="toc-text">二、最常用的encodeURI和encodeURIComponent</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、最重要的，什么场合应该用什么方法"><span class="toc-number">3.</span> <span class="toc-text">三、最重要的，什么场合应该用什么方法</span></a></li></ol>
 		
 		</div>
 		
-		<p><position>值支持1~4个值，可以是具体数值，也可以是百分比，也可以是left, top, right, center, bottom关键字</position></p>
-<p>如果偏移没有响应的关键字，则会被认为是center.</p>
-<p>3值或4值可以指定偏移的相对位置，这是CSS3新特性，现代浏览器下才支持。包括：Chrome 25+, Firefox 13+, IE 9+, Opera 10.5+, Safari/iOS 7+ .</p>
-<p>哇哦，IE9都支持，应该可以愉快地使用了吧！抱歉，我要泼点冷水。貌似Android的支持有些糟糕，据说：Android 4.4才支持，Android 4.0~4.2都不支持。因此，我们在实现此类效果的时候，可能还需要留一手，如下，使用calc计算：</p>
-<p>background-position: calc(100% - 40px) calc(100% -20px);</p>
-<p>因此，实际使用还需要根据场景分别或hack处理。</p>
+		<h2 id="一、escape和它们不是同一类">一、escape和它们不是同一类</h2>
+<p>简单来说，escape是对字符串(string)进行编码(而另外两种是对URL)，作用是让它们在所有电脑上可读。</p>
+<p>编码之后的效果是%XX或者%uXXXX这种形式。</p>
+<p>其中 ASCII字母 数字 @*/+ 这几个字符不会被编码，其余的都会。</p>
+<p>最关键的是，当你需要对URL编码时，请忘记这个方法，这个方法是针对字符串使用的，不适用于URL。</p>
+<h2 id="二、最常用的encodeURI和encodeURIComponent">二、最常用的encodeURI和encodeURIComponent</h2>
+<p>对URL编码是常见的事，所以这两个方法应该是实际中要特别注意的。</p>
+<p>它们都是编码URL，唯一区别就是编码的字符范围，其中</p>
+<p>encodeURI方法不会对下列字符编码 ASCII字母 数字 ~!@#$&amp;*()=:/,;?+’</p>
+<p>encodeURIComponent方法不会对下列字符编码 ASCII字母 数字 ~!*()’</p>
+<p>所以encodeURIComponent比encodeURI编码的范围更大。</p>
+<p>实际例子来说，encodeURIComponent会把 http:// 编码成 http%3A%2F%2F 而encodeURI却不会。</p>
+<h2 id="三、最重要的，什么场合应该用什么方法">三、最重要的，什么场合应该用什么方法</h2>
+<p>1、如果只是编码字符串，不和URL有半毛钱关系，那么用escape。</p>
+<p>2、如果你需要编码整个URL，然后需要使用这个URL，那么用encodeURI。<br>比如</p>
+<pre><code><span class="built_in">encodeURI</span>(<span class="string">"http://www.cnblogs.com/season-huang/some other thing"</span>);
+</code></pre><p>编码后会变为</p>
+<p>“<a href="http://www.cnblogs.com/season-huang/some%20other%20thing" target="_blank" rel="external">http://www.cnblogs.com/season-huang/some%20other%20thing</a>“;</p>
+<p>其中，空格被编码成了%20。但是如果你用了encodeURIComponent，那么结果变为</p>
+<p>“http%3A%2F%2Fwww.cnblogs.com%2Fseason-huang%2Fsome%20other%20thing”</p>
+<p>看到了区别吗，连 “/“ 都被编码了，整个URL已经没法用了。<br>3、当你需要编码URL中的参数的</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -110,7 +127,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://yoursite.com/2015/03/19/backgroundPosition/" data-title="CSS3 background-position新值了解 | Nobody&#39;s blog" data-tsina="null" class="share clearfix">
+  <div data-url="http://yoursite.com/2015/03/19/encodeURI/" data-title="escape,encodeURI,encodeURIComponent有什么区别 | Nobody&#39;s blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -129,9 +146,9 @@
 
 
 <div class="next">
-<a href="/2015/03/12/goon/"  title="go on don&#39;t think what things you did before">
+<a href="/2015/03/19/backgroundPosition/"  title="CSS3 background-position新值了解">
  <strong>下一篇：</strong><br/> 
- <span>go on don&#39;t think what things you did before
+ <span>CSS3 background-position新值了解
 </span>
 </a>
 </div>
@@ -146,7 +163,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、escape和它们不是同一类"><span class="toc-number">1.</span> <span class="toc-text">一、escape和它们不是同一类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、最常用的encodeURI和encodeURIComponent"><span class="toc-number">2.</span> <span class="toc-text">二、最常用的encodeURI和encodeURIComponent</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、最重要的，什么场合应该用什么方法"><span class="toc-number">3.</span> <span class="toc-text">三、最重要的，什么场合应该用什么方法</span></a></li></ol>
  
   </div>
 
