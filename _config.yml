@@ -18,7 +18,7 @@ description: > # this means to ignore newlines until "baseurl:"
   A computer engineer.
   Because I like it. Just do it. No regret.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://yourdomain.com" # the base hostname & protocol for your site
+url: "http://az8321550.github.io" # the base hostname & protocol for your site
 twitter_username: az8321550
 github_username:  az8321550
 
