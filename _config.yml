@@ -10,6 +10,11 @@ description: > # this means to ignore newlines until "baseurl:"
   I began coding.
   A computer engineer.
   Because I like it. Just do it. No regret.
+
+gems: [jekyll-paginate]
+paginate: 10
+paginate_path: "/page:num"
+
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://az8321550.github.io" # the base hostname & protocol for your site
 twitter_username: az8321550
