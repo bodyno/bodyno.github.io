@@ -6,9 +6,8 @@
 
 
 // Our variables
-$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-family: Helvetica, Arial, sans-serif;
 $base-font-size:   16px;
-$base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
 
@@ -19,18 +18,20 @@ $background-color: #fdfdfd;
 $brand-color:      #2a7ae2;
 
 $grey-color:       #828282;
-$grey-color-light: lighten($grey-color, 40%);
+$grey-color-light: lighten($grey-color, 15%);
 $grey-color-dark:  darken($grey-color, 25%);
 
 // Width of the content area
-$content-width:    800px;
+$content-width:    1000px;
 
 $on-palm:          600px;
 $on-laptop:        800px;
 
+$on-landscape:     1500px;
 
 
-// Use media queries like this:
+
+// Using media queries with like this:
 // @include media-query($on-palm) {
 //     .wrapper {
 //         padding-right: $spacing-unit / 2;
@@ -38,16 +39,30 @@ $on-laptop:        800px;
 //     }
 // }
 @mixin media-query($device) {
-    @media screen and (max-width: $device) {
-        @content;
+    @if( $device < 1400px ) {
+        @media screen and (max-width: $device) {
+            @content;
+        }
+    }
+    @else {
+        @media screen and (min-width: $device) {
+            @content;
+        }
     }
 }
 
+@mixin transition( $time: 0.3s ) {
+    -webkit-transition: all $time ease-in-out;
+    -moz-transition: all $time ease-in-out;
+    -ms-transition: all $time ease-in-out;
+    -o-transition: all $time ease-in-out;
+    transition: all $time ease-in-out;
+}
 
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
-        "base",
-        "layout",
-        "syntax-highlighting"
+"base",
+"layout",
+"syntax-highlighting"
 ;

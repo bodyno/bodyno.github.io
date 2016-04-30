@@ -1,20 +1,50 @@
 <!DOCTYPE html>
 <html>
 
-  {% include head.html %}
+    {% include head.html %}
 
-  <body>
+    <body>
 
-    {% include header.html %}
+        {% include header.html %}
 
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
-    </div>
+        <div class="page-content animated fadeIn">
+            <div class="wrapper">
+                {{ content }}
+            </div>
+        </div>
 
-    {% include footer.html %}
+        <a href="Mailto:jyamol520@gmail.com?CC=jyamol520@gmail.com&BCC=jyamol520@gmail.com&Subject=Remind&Body=This email is from your blog. Someone want to contact to you!" class="float-btn" id="connect-to-me-btn">
+            <i class="fa fa-envelope email-icon"></i>
+            <span class="email-text">Email to me!</span>
+        </a>
 
-  </body>
+        {% include footer.html %}
+
+        <script>
+            /**
+             * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            /*var disqus_config = function () {
+                this.page.url = 'erichain.me'; // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };*/
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+
+                s.src = '//erichain.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+        <script id="dsq-count-scr" src="//erichain.disqus.com/count.js" async></script>
+        <script src="{{ '/scripts/jquery.min.js' | prepend: site.baseurl }}"></script>
+        <script src="{{ '/scripts/app.js' | prepend: site.baseurl }}"></script>
+        <script src="{{ '/scripts/nprogress.js' | prepend: site.baseurl }}"></script>
+        <script src="{{ '/scripts/progressCtrl.js' | prepend: site.baseurl }}"></script>
+    </body>
 
 </html>
