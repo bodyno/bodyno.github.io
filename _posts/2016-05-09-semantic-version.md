@@ -62,3 +62,4 @@ $ npm install PACKAGE_NAME --save
 
 在`package.json`里写入版本号或者安装依赖时指定版本的时候，可以写成`x`或者`*`。
 
+就是这样 喵~
