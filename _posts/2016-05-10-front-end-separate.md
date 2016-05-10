@@ -8,7 +8,7 @@ categories: Front-End
 
 # front-end-separate(前后端分离脚手架)
 
-[front-end-separate](https://github.com/az8321550/front-end-separate)
+[front-end-separate](https://github.com/az8321550/front-end-separate){:target="_blank"}
 
 一个前后端分离的脚手架工具（自主研发）
 
