@@ -1,6 +1,6 @@
-# az8321550.github.io
+# A blog
 
-###[az8321550.github.io](https://az8321550.github.io/)
+[bodyno.com](https://bodyno.com/) already bind a host
 
 My blog use Jekyll. Because I like it so much!
 
@@ -13,3 +13,12 @@ Hope this can cheer for myself.
 And if you also life to write a blog.
 
 I recommend you use Jekyll, Because it is nice to use and awesome!
+
+## License
+
+All directories and files are MIT Licensed (where applicable).
+
+## Me
+
+:wave: [@nobody](http://github.com/bodyno)
+:panda_face:
