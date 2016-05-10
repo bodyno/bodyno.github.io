@@ -1,6 +1,6 @@
 # A blog
 
-[bodyno.com](https://bodyno.com/) already bind a host
+[bodyno.com](http://bodyno.com/) already bind a host
 
 My blog use Jekyll. Because I like it so much!
 
