@@ -20,7 +20,7 @@ categories: Front-End
 
 已在生产环境验证
 
-基于express和grunt的前后端分离框架:+1::+1::+1:
+基于express和grunt的前后端分离框架
 
 模板引擎使用的是nunjucks，好处是可以实现模版继承，又不像jade一样把html标签都简化了
 
@@ -91,8 +91,8 @@ $ grunt sprite 执行即可得到精灵图片，如需配置请去config/grunt/s
 
 如果大家喜欢的话，请点一下star此项目或follow一下本人，即是对本人最大的支持
 
-我会继续完善这个项目的，并一直维护下去，如果有任何问题，欢迎在issues里面提出:wink:
+我会继续完善这个项目的，并一直维护下去，如果有任何问题，欢迎在issues里面提出
 
 感谢大家支持!
 
-——Nobody:point_up::point_up::point_up:
+——Nobody
