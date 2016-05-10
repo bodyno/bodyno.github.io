@@ -1,7 +1,6 @@
-# Site settings
 title: Nobody's personal site
 email: az8321550@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
+description: >
   Hey guys. My name is Body No. This is my blog. Build by jekyll.
   Since I was young. I liked play computer game.
   And wondering how the game created.
@@ -14,11 +13,7 @@ description: > # this means to ignore newlines until "baseurl:"
 gems: [jekyll-paginate]
 paginate: 10
 paginate_path: "/page:num"
-
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://az8321550.github.io" # the base hostname & protocol for your site
+url: "http://bodyno.com"
 twitter_username: az8321550
 github_username:  az8321550
-
-# Build settings
 markdown: kramdown
