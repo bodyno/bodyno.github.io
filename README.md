@@ -14,6 +14,11 @@ And if you also life to write a blog.
 
 I recommend you use Jekyll, Because it is nice to use and awesome!
 
+## Complie
+```
+$ jekyll server
+```
+
 ## License
 
 All directories and files are MIT Licensed (where applicable).
