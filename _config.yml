@@ -16,5 +16,5 @@ paginate_path: "/page:num"
 url: "https://bodyno.com"
 enforce_ssl: bodyno.com
 twitter_username: az8321550
-github_username:  az8321550
+github_username:  bodyno
 markdown: kramdown
