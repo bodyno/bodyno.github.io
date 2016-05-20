@@ -1,6 +1,6 @@
 # A blog
 
-[bodyno.com](http://bodyno.com/) already bind a host
+[bodyno.com](http://bodyno.com/) has already bind a host
 
 My blog use Jekyll. Because I like it so much!
 
@@ -25,5 +25,5 @@ All directories and files are MIT Licensed (where applicable).
 
 ## Me
 
-:wave: [@nobody](http://github.com/bodyno)
+:wave: [@nobody](https://bodyno.com/about)
 :panda_face:
