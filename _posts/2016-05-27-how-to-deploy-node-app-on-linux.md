@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "如何在Linux上部署node应用"
-date:   2016-04-20
+date:   2016-05-27
 tags: [node, linux]
 categories: Full-Stack
 ---
