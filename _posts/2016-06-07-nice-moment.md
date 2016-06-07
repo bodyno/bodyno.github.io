@@ -18,12 +18,6 @@ It's just about how to make this world more lovely together.
 
 Finally, Happy Dragon Boat Festival.
 
-
-
-
-
-
-
 Thanks
 
 
