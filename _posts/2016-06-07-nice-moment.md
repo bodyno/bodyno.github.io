@@ -12,7 +12,7 @@ categories: github
 
 And Recently already 200 stars. Excited.
 
-![And recently]({{ site.url }}/assets/stars2.jpg)
+![And recently]({{ site.url }}/assets/stars2.png)
 
 It's a nice moment when my open source project had 100 stars on github. I was excited about it. It means that what I did still has many people care about.
 
