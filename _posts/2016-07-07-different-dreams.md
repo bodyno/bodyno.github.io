@@ -10,8 +10,11 @@ categories: Personal
 
 ![Dream of America]({{ site.url }}/assets/dream_america.png)
 
+<br><br><br>
 
+---
 
+<br><br><br>
 
 ## 中国梦
 
