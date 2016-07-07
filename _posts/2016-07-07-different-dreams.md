@@ -6,9 +6,9 @@ tags: []
 categories: Personal
 ---
 
-![Dream of America]({{ site.url }}/assets/dream_america.jpg)
+![Dream of America]({{ site.url }}/assets/dream_america.png)
 
-![Dream of China]({{ site.url }}/assets/dream_china.jpg)
+![Dream of China]({{ site.url }}/assets/dream_china.png)
 
 为什么两种梦是完全不一样的
 
