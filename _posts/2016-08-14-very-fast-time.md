@@ -2,7 +2,7 @@
 layout: post
 title:  "Very fast time"
 date:   2016-08-14
-tags: [time, time2]
+tags: [time]
 categories: Personal
 ---
 
