@@ -6,6 +6,8 @@ tags: [ES6]
 categories: Front-End
 ---
 
+FROM [Six nifty ES6 tricks](http://www.2ality.com/2016/05/six-nifty-es6-tricks.html?utm_source=javascriptweekly&utm_medium=email)
+
 In this blog post, I show six tricks enabled by new ES6 features. At the end of each section, I point to related material in my book “Exploring ES6” (which is free to read online).
 
 Enforcing mandatory parameters via parameter default values
