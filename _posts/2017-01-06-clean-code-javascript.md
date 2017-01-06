@@ -8,7 +8,7 @@ categories: Front-End
 
 # clean-code-javascript
 
-### (original)[https://github.com/ryanmcdermott/clean-code-javascript]
+### [original](https://github.com/ryanmcdermott/clean-code-javascript)
 
 ## Table of Contents
   1. [Introduction](#introduction)
@@ -2097,3 +2097,5 @@ function calculateBill() {
 }
 ```
 **[⬆ back to top](#table-of-contents)**
+
+### [original](https://github.com/ryanmcdermott/clean-code-javascript)
