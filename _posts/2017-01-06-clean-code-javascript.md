@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Clean code javascript"
+date: 2016-01-06
+tags: [ES6]
+categories: Front-End
+---
+
 # clean-code-javascript
 
 ### (original)[https://github.com/ryanmcdermott/clean-code-javascript]
