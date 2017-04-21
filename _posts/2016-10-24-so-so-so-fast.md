@@ -24,6 +24,6 @@ categories: Personal
 
 ---
 
-![cucu]({{ site.url }}/assets/cucu1.jpg)
+![cucu]({{ site }}/assets/cucu1.jpg)
 
-![cucu]({{ site.url }}/assets/cucu2.jpg)
+![cucu]({{ site }}/assets/cucu2.jpg)

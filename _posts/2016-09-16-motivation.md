@@ -28,4 +28,4 @@ reselect, redux-saga, rxjs 近期主要学习目标就这些了。
 
 谢谢大家，再一句，中秋快乐！
 
-![xiaoxi]({{ site.url }}/assets/middle_autumn.jpg)
+![xiaoxi]({{ site }}/assets/middle_autumn.jpg)

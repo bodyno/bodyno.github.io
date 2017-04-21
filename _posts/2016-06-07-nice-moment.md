@@ -8,11 +8,11 @@ categories: github
 
 # What moment
 
-![My 100 star]({{ site.url }}/assets/stars.jpg)
+![My 100 star]({{ site }}/assets/stars.jpg)
 
 And Recently already 200 stars. Excited.
 
-![And recently]({{ site.url }}/assets/stars2.png)
+![And recently]({{ site }}/assets/stars2.png)
 
 It's a nice moment when my open source project had 100 stars on github. I was excited about it. It means that what I did still has many people care about.
 

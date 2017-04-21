@@ -30,4 +30,4 @@ categories: Personal
 
 一起成为更好的自己
 
-![minions]({{ site.url }}/assets/minions.jpg)
+![minions]({{ site }}/assets/minions.jpg)
