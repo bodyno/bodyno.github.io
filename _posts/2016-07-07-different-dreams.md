@@ -8,7 +8,7 @@ categories: Personal
 
 ## 美国梦
 
-![Dream of America]({{ site }}/assets/dream_america.png)
+![Dream of America](/assets/dream_america.png)
 
 <br><br><br>
 
@@ -18,7 +18,7 @@ categories: Personal
 
 ## 中国梦
 
-![Dream of China]({{ site }}/assets/dream_china.png)
+![Dream of China](/assets/dream_china.png)
 
 为什么两种梦是完全不一样的
 

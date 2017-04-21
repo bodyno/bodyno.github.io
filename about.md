@@ -36,4 +36,4 @@ Thank you everyone.
 
 Hope you also have a nice day.
 
-![My profit]({{ site }}/assets/me.jpg)
+![My profit](/assets/me.jpg)

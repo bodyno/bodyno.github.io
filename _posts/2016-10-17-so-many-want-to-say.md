@@ -30,18 +30,18 @@ categories: Personal
 
 ---
 
-![cucu and me]({{ site }}/assets/cucu_and_me1.jpg)
+![cucu and me](/assets/cucu_and_me1.jpg)
 
-![cucu and me]({{ site }}/assets/cucu_and_me2.jpg)
+![cucu and me](/assets/cucu_and_me2.jpg)
 
-![cucu and me]({{ site }}/assets/cucu_and_me3.jpg)
+![cucu and me](/assets/cucu_and_me3.jpg)
 
-![cucu and me]({{ site }}/assets/cucu_and_me4.jpg)
+![cucu and me](/assets/cucu_and_me4.jpg)
 
-![cucu and me]({{ site }}/assets/cucu_and_me5.jpg)
+![cucu and me](/assets/cucu_and_me5.jpg)
 
-![cucu and me]({{ site }}/assets/cucu_and_me6.jpg)
+![cucu and me](/assets/cucu_and_me6.jpg)
 
-![cucu and me]({{ site }}/assets/cucu_and_me7.jpg)
+![cucu and me](/assets/cucu_and_me7.jpg)
 
-![kitten]({{ site }}/assets/kitten.jpg)
+![kitten](/assets/kitten.jpg)

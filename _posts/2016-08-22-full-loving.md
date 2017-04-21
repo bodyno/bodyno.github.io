@@ -22,4 +22,4 @@ categories: Personal
 
 却只想对你说：我爱你-小西酱
 
-![flower]({{ site }}/assets/flower.jpg)
+![flower](/assets/flower.jpg)

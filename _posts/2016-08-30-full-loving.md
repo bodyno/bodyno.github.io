@@ -38,4 +38,4 @@ categories: Personal
 
 写于工作中的忙里偷闲
 
-![xiaoxi]({{ site }}/assets/xiaoxi.jpg)
+![xiaoxi](/assets/xiaoxi.jpg)

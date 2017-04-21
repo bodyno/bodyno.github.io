@@ -18,4 +18,4 @@ Appreciate everyone that helps me.
 
 # Happy the seventh evening of the seventh moon
 
-![Miss.Rey]({{ site }}/assets/rey.jpg)
+![Miss.Rey](/assets/rey.jpg)

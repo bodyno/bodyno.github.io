@@ -30,8 +30,8 @@ categories: Personal
 
 在飞机场练车技
 
-![electrical moto1]({{ site }}/assets/holiday1.jpg)
+![electrical moto1](/assets/holiday1.jpg)
 
-![electrical moto2]({{ site }}/assets/holiday2.jpg)
+![electrical moto2](/assets/holiday2.jpg)
 
-![electrical moto3]({{ site }}/assets/holiday3.jpg)
+![electrical moto3](/assets/holiday3.jpg)

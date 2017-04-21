@@ -32,6 +32,6 @@ categories: Personal
 
 但是你马上又要走了，唔唔
 
-![Lily]({{ site }}/assets/lily.jpg)
+![Lily](/assets/lily.jpg)
 
-![dogToy]({{ site }}/assets/dog_toy.jpg)
+![dogToy](/assets/dog_toy.jpg)
