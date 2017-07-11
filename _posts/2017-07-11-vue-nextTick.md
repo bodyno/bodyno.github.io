@@ -14,12 +14,12 @@ Vue nextTick是一个非常有用的方法，在项目中，我们要经常改�
 
 下面是官方的说明
 
- ![图片](https://dn-coding-net-production-pp.qbox.me/3ae06072-8a79-456e-8082-d0c50ef54123.png)
+![vue nextTick](https://dn-coding-net-production-pp.qbox.me/3ae06072-8a79-456e-8082-d0c50ef54123.png)
 
 
 再赋上我们的代码
 
-`
+````
 this.$nextTick(function () {
 
 })
@@ -27,7 +27,7 @@ this.$nextTick(function () {
 this.$nextTick().then(() => {
 
 })
-`
+````
 
 小伙伴们看一下，这样写一下是不是就优雅很多了
 
