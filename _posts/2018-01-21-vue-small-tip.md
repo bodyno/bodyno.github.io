@@ -11,9 +11,9 @@ categories: programe
 这里分享一个关于Vue图片懒加载的小技巧，
 
 
-`
+````
 <lazy-image :src='../assets/rey.jpg' />
-`
+````
 
 我们知道想要懒加载图片是希望页面显示出来之后再去加载这张图片，
 
@@ -22,13 +22,13 @@ categories: programe
 那我们就需要动态引入图片的路径，让webpack打包完成后，将路径和文件名替换掉。
 
 
-`
+````
 <lazy-image :src='require("../assets/rey.jpg")' />
-`
+````
 
 这样，就可以完成图片懒加载并webpack打包了，不用像以前的老方法，先上传到oss上面再来引用。
 
-![result](/assets/vue_result.jpg)
+![result](/assets/vue_result.png)
 
 是不是感觉一下开朗了许多，
 
