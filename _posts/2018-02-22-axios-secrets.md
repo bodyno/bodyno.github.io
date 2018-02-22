@@ -6,10 +6,7 @@ tags: [ajax]
 categories: programe
 ---
 
-![axios的秘密](https://pic1.zhimg.com/v2-8c33bcc98dd29252ee497c178d591d7d_r.jpg)
-
-axios的秘密
-========
+![axios的秘密](/assets/axios.jpg)
 
 vue自2.0开始，vue-resource不再作为官方推荐的ajax方案，转而推荐使用**axios**。
 

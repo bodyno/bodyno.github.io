@@ -25,5 +25,5 @@ All directories and files are MIT Licensed (where applicable).
 
 ## Me
 
-:wave: [@nobody](https://bodyno.com/about)
+:wave: [@nobody](bodyno.com/about)
 :panda_face:
