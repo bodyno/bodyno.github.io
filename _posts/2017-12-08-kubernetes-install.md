@@ -16,7 +16,7 @@ categories: programe
 
 哈哈，很简单，已经有哥们帮我们做好了。
 
-(k8s-install-scripts)[https://github.com/zhuchuangang/k8s-install-scripts]这个将yum包下在本地，同时使用阿里云的docker源来进行安装，在国内的安装速度可谓不要不要，如果需要安装高可用版本，就选择kubespray方式安装就好了。
+[k8s-install-scripts](https://github.com/zhuchuangang/k8s-install-scripts)这个将yum包下在本地，同时使用阿里云的docker源来进行安装，在国内的安装速度可谓不要不要，如果需要安装高可用版本，就选择kubespray方式安装就好了。
 
 嗯，这里就是简单分享一个这个项目。
 
