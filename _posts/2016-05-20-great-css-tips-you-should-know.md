@@ -9,7 +9,7 @@ categories: Front-End
 
 **本文分享关于CSS应用中的一些小技巧， 如果有不对的地方，欢迎指出建议和意见。**
 
-**Github项目地址：[Great-CSS-Tips-You-Should-Know](https://bodyno.com)，欢迎fork和star，如果有更多的tips，也欢迎提交PR。**
+**Github项目地址：[Great-CSS-Tips-You-Should-Know](https://nobody.kdk.fun)，欢迎fork和star，如果有更多的tips，也欢迎提交PR。**
 
 ### 使用CSS来垂直居中一切元素
 

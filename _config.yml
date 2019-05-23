@@ -13,8 +13,8 @@ description: >
 gems: [jekyll-paginate]
 paginate: 10
 paginate_path: "/page/:num"
-url: "https://bodyno.com"
-enforce_ssl: bodyno.com
+url: "https://nobody.kdk.fun"
+enforce_ssl: nobody.kdk.fun
 future: true
 twitter_username: az8321550
 github_username:  bodyno

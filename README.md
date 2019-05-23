@@ -1,6 +1,6 @@
 # A blog
 
-[bodyno.com](http://bodyno.com/) has already bind a host
+[nobody.kdk.com](https://nobody.kdk.com/) has already bind a host
 
 My blog use Jekyll. Because I like it so much!
 
@@ -16,7 +16,10 @@ I recommend you use Jekyll, Because it is nice to use and awesome!
 
 ## Complie
 ```
-$ jekyll server
+docker run --rm \
+  --volume="$PWD:/srv/jekyll:Z" \
+  -it jekyll/jekyll:3.8 \
+  jekyll build
 ```
 
 ## License
@@ -25,5 +28,5 @@ All directories and files are MIT Licensed (where applicable).
 
 ## Me
 
-:wave: [@nobody](bodyno.com/about)
+:wave: [@nobody](https://nobody.kdk.fun/about)
 :panda_face:
