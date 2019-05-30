@@ -1,6 +1,6 @@
 # A blog
 
-[nobody.kdk.com](https://nobody.kdk.com/) has already bind a host
+[nobody.kdk.fun](https://nobody.kdk.fun/) has already bind a host
 
 My blog use Jekyll. Because I like it so much!
 
