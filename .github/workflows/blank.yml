@@ -9,16 +9,13 @@ jobs:
 
     steps:
     - name: go ssh and build
-      uses: appleboy/ssh-action@v0.0.2
+      uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         script_stop: true
         script: |
-          cd /home/code/bodyno.github.io/_site
+          cd /home/code/bodyno.github.io
           git pull
-          docker run --rm \
-            --volume="$PWD:/srv/jekyll:Z" \
-            -it jekyll/jekyll:3.8 \
-            jekyll build
+          docker run --rm --volume="$PWD:/srv/jekyll:Z" jekyll/jekyll:3.8 jekyll build
