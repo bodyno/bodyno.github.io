@@ -1,21 +1,25 @@
-name: CI
-
-on: [push]
+on: [push] # push 代码时触发
 
 jobs:
-  build:
-
+  deploy:
     runs-on: ubuntu-latest
-
+    name: Tencent Cloudbase Github Action Example
     steps:
-    - name: go ssh and build
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        script_stop: true
-        script: |
-          cd /home/code/bodyno.github.io
-          git pull
-          docker run --rm --volume="$PWD:/srv/jekyll:Z" jekyll/jekyll:3.8 jekyll build
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build
+        uses: jerryjvl/jekyll-build-action@v1
+
+      # 使用云开发 Github Action 部署
+      - name: Deploy static to Tencent CloudBase
+        id: deployStatic
+        uses: TencentCloudBase/cloudbase-action@v1
+        with:
+          # 云开发的访问密钥 secretId 和 secretKey
+          secretId: ${{ secrets.SECRET_ID }}
+          secretKey: ${{ secrets.SECRET_KEY }}
+          # 云开发的环境id
+          envId: ${{ secrets.ENV_ID }}
+          # Github 项目静态文件的路径
+          staticSrcPath: _site
