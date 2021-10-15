@@ -18,7 +18,7 @@ required: true
 type: "text"
 ```
 前端遍历`type` 字段，根据预设好的模板生成相应的`input` 界面
-![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cf398a7d6a524c17a09ec8f7ea882af2~tplv-k3u1fbpfcp-watermark.image?)
+![图片](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/391de318ac3840678546f29a0c01c089~tplv-k3u1fbpfcp-watermark.image?)
 
 插件参数`variables` 来源于编写参数时填写的[描述文件](https://help.coding.net/docs/ci/plugins/customize/format.html)
 
@@ -28,7 +28,7 @@ type: "text"
 
 渲染表单时，取出JSON定义，使用前端开源组件`react-jsonschema-form` 直接生成相应UI即可
 
-![图片](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/391de318ac3840678546f29a0c01c089~tplv-k3u1fbpfcp-watermark.image?)
+![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cf398a7d6a524c17a09ec8f7ea882af2~tplv-k3u1fbpfcp-watermark.image?)
 
 CUE 的使用其实就是定义模板，通过CUE 语法的灵活强大性，把复杂的yaml封装起来，通过parameter 定义参数（如下），生成最终需要的文件
 ```
