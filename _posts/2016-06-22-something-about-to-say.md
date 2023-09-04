@@ -12,7 +12,7 @@ In those days. something really changed in my life. Here, It's not just about th
 
 But. Deeply. I've already learned a lot things from my life. Gradually forming my individuality.
 
-I like kidding everything. Even it is very serious. Because life is so hard. Why not just give it a shook. So, Keep going. There is nothing gonna to stop you. You are just one of the billion. Nobody cares about you and you neither don't need to care about it.
+I like kidding everything. Even it is very serious. Because life is so hard. Why not just give it a shook. So, Keep going. There is nothing gonna to stop you. You are just one of the billion. Bodyxu cares about you and you neither don't need to care about it.
 
 This is what a world we living. Be free. Be proudTobe. Don't afraid. Keeping going.
 

@@ -95,4 +95,4 @@ $ grunt sprite 执行即可得到精灵图片，如需配置请去config/grunt/s
 
 感谢大家支持!
 
-——Nobody
+——BodyXu
