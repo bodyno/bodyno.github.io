@@ -1,6 +1,6 @@
 # A blog
 
-[nobody.kdk.fun](https://nobody.kdk.fun/) has already bind a host
+[bodyno.github.io](https://bodyno.github.io/) has already bind a host
 
 My blog use Jekyll. Because I like it so much!
 
@@ -28,5 +28,5 @@ All directories and files are MIT Licensed (where applicable).
 
 ## Me
 
-:wave: [@nobody](https://nobody.kdk.fun/about)
+:wave: [@nobody](https://bodyno.github.io/about)
 :panda_face:
